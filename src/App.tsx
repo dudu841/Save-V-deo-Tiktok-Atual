@@ -63,7 +63,7 @@ export default function App() {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Save Video Tiktok",
-        "url": "https://savetik.net",
+        "url": "https://savevideotik.com",
         "description": t.seo.description,
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "All",
@@ -265,21 +265,21 @@ export default function App() {
                 
                 <div className="flex flex-col gap-3 mt-2">
                   <button 
-                    onClick={() => triggerDownload(result.play, `savetik_${result.author}_video.mp4`)}
+                    onClick={() => triggerDownload(result.play, `video_${result.author}.mp4`)}
                     className="w-full py-3 px-4 bg-[#fe0979] hover:bg-[#e0086b] text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm"
                   >
                     <Download className="w-5 h-5" />
                     {t.result.noWatermark}
                   </button>
                   <button 
-                    onClick={() => triggerDownload(result.hdplay, `savetik_${result.author}_hd_video.mp4`)}
+                    onClick={() => triggerDownload(result.hdplay, `video_hd_${result.author}.mp4`)}
                     className="w-full py-3 px-4 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 shadow-sm"
                   >
                     <Download className="w-5 h-5" />
                     {t.result.hd}
                   </button>
                   <button 
-                    onClick={() => triggerDownload(result.music, `savetik_${result.author}_audio.mp3`)}
+                    onClick={() => triggerDownload(result.music, `audio_${result.author}.mp3`)}
                     className="w-full py-3 px-4 bg-white border-2 border-gray-200 hover:border-gray-300 text-gray-800 font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
                   >
                     <Music className="w-5 h-5 text-gray-500" />
