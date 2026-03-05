@@ -12,17 +12,17 @@ export default function App() {
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [lang, setLang] = useState<Language>('en');
-  
-  useEffect(() => {
-    // Detect browser language
+  const [lang, setLang] = useState<Language>(() => {
+    const savedLang = localStorage.getItem('preferred_language') as Language;
+    if (savedLang && ['en', 'pt', 'es'].includes(savedLang)) {
+      return savedLang;
+    }
     const browserLang = navigator.language.split('-')[0];
     if (browserLang === 'pt' || browserLang === 'es') {
-      setLang(browserLang as Language);
-    } else {
-      setLang('en');
+      return browserLang as Language;
     }
-  }, []);
+    return 'en';
+  });
 
   useEffect(() => {
     const t = translations[lang];
@@ -167,7 +167,11 @@ export default function App() {
               <Globe className="w-4 h-4" />
               <select 
                 value={lang} 
-                onChange={(e) => setLang(e.target.value as Language)}
+                onChange={(e) => {
+                  const newLang = e.target.value as Language;
+                  setLang(newLang);
+                  localStorage.setItem('preferred_language', newLang);
+                }}
                 className="bg-transparent border-none focus:ring-0 cursor-pointer font-medium outline-none"
               >
                 <option value="en">English</option>
