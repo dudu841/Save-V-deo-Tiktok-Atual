@@ -127,6 +127,11 @@ export default function App() {
         body: JSON.stringify({ url }),
       });
 
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error(t.errors.fetch + " (Server returned an invalid response. Please make sure the backend is running.)");
+      }
+
       const data = await response.json();
 
       if (!response.ok) {
