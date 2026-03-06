@@ -1,0 +1,22 @@
+export const landingPages = [
+  { slug: 'save-video-tiktok', keyword: 'Save Video TikTok' },
+  { slug: 'download-tiktok-video', keyword: 'Download TikTok Video' },
+  { slug: 'tiktok-mp3-download', keyword: 'TikTok MP3 Download' },
+  { slug: 'download-without-watermark', keyword: 'Download TikTok Without Watermark' },
+  { slug: 'tiktok-downloader', keyword: 'TikTok Downloader' },
+  { slug: 'download-tiktok-hd', keyword: 'Download TikTok HD' },
+  { slug: 'download-tiktok-4k', keyword: 'Download TikTok 4K' },
+  { slug: 'save-tiktok-video', keyword: 'Save TikTok Video' },
+  { slug: 'how-to-download-tiktok-video', keyword: 'How to Download TikTok Video' },
+  { slug: 'tiktok-video-downloader-mp4', keyword: 'TikTok Video Downloader MP4' },
+  { slug: 'download-tiktok-pc', keyword: 'Download TikTok on PC' },
+  { slug: 'download-tiktok-iphone', keyword: 'Download TikTok on iPhone' },
+  { slug: 'download-tiktok-android', keyword: 'Download TikTok on Android' },
+  { slug: 'best-tiktok-downloader', keyword: 'Best TikTok Downloader 2026' },
+  { slug: 'tiktok-link-downloader', keyword: 'TikTok Link Downloader' },
+  { slug: 'download-tiktok-stories', keyword: 'Download TikTok Stories' },
+  { slug: 'download-tiktok-slideshow', keyword: 'Download TikTok Photo Slideshow' },
+  { slug: 'download-private-tiktok', keyword: 'TikTok Private Video Downloader' },
+  { slug: 'tiktok-downloader-online', keyword: 'Online TikTok Downloader No App' },
+  { slug: 'download-tiktok-music', keyword: 'Download TikTok Music' }
+];
