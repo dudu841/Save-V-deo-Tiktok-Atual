@@ -87,6 +87,20 @@ async function startServer() {
       appType: "spa",
     });
     app.use(vite.middlewares);
+    
+    // Explicit SPA fallback for development
+    app.use('*', async (req, res, next) => {
+      try {
+        const url = req.originalUrl;
+        const fs = await import('fs');
+        let template = fs.readFileSync('index.html', 'utf-8');
+        template = await vite.transformIndexHtml(url, template);
+        res.status(200).set({ 'Content-Type': 'text/html' }).end(template);
+      } catch (e) {
+        vite.ssrFixStacktrace(e as Error);
+        next(e);
+      }
+    });
   } else {
     app.use(express.static("dist"));
     // SPA fallback for production
