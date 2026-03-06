@@ -1,53 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Download, CheckCircle, Zap, Shield, HelpCircle, ChevronDown, ChevronUp, Smartphone, Monitor, Link as LinkIcon, PlayCircle, Music, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { translations, Language } from '../translations';
+import { landingPages } from '../data/landingPages';
+import { useLanguage } from '../hooks/useLanguage';
 
 export default function Home() {
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [lang, setLang] = useState<Language>(() => {
-    const savedLang = localStorage.getItem('preferred_language') as Language;
-    if (savedLang && ['en', 'pt', 'es'].includes(savedLang)) {
-      return savedLang;
-    }
-    return 'en'; // Default to English
-  });
-
-  useEffect(() => {
-    const detectLocationAndLanguage = async () => {
-      if (!localStorage.getItem('preferred_language')) {
-        try {
-          const response = await fetch('https://get.geojs.io/v1/ip/geo.json');
-          if (!response.ok) throw new Error('Failed to fetch location');
-          const data = await response.json();
-          const countryCode = data.country_code;
-          
-          const ptCountries = ['BR', 'PT', 'AO', 'MZ', 'CV', 'GW', 'ST', 'TL'];
-          const esCountries = ['ES', 'MX', 'AR', 'CO', 'PE', 'VE', 'CL', 'EC', 'GT', 'CU', 'BO', 'DO', 'HN', 'PY', 'SV', 'NI', 'CR', 'PR', 'PA', 'UY', 'GQ'];
-          
-          let detectedLang: Language = 'en';
-          if (ptCountries.includes(countryCode)) {
-            detectedLang = 'pt';
-          } else if (esCountries.includes(countryCode)) {
-            detectedLang = 'es';
-          }
-          
-          setLang(detectedLang);
-        } catch (error) {
-          console.error('Error detecting location:', error);
-          // Fallback to browser language if location detection fails
-          const browserLang = navigator.language.split('-')[0];
-          if (browserLang === 'pt' || browserLang === 'es') {
-            setLang(browserLang as Language);
-          }
-        }
-      }
-    };
-
-    detectLocationAndLanguage();
-  }, []);
+  const { lang, changeLanguage } = useLanguage();
 
   useEffect(() => {
     const t = translations[lang];
@@ -194,8 +157,7 @@ export default function Home() {
                 value={lang} 
                 onChange={(e) => {
                   const newLang = e.target.value as Language;
-                  setLang(newLang);
-                  localStorage.setItem('preferred_language', newLang);
+                  changeLanguage(newLang);
                 }}
                 className="bg-transparent border-none focus:ring-0 cursor-pointer font-medium outline-none"
               >
@@ -428,6 +390,18 @@ export default function Home() {
             </ul>
           </div>
         </div>
+
+        <div className="max-w-5xl mx-auto pt-8 border-t border-gray-800 mb-8">
+          <h4 className="text-white font-semibold mb-6 text-center">Popular Tools & Pages</h4>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-center md:text-left">
+            {landingPages.map((page) => (
+              <Link key={page.slug} to={`/${page.slug}`} className="hover:text-white transition-colors">
+                {page.keyword[lang]}
+              </Link>
+            ))}
+          </div>
+        </div>
+
         <div className="max-w-5xl mx-auto pt-8 border-t border-gray-800 text-sm text-center">
           <p>&copy; {new Date().getFullYear()} {t.footer.rights}</p>
           <p className="mt-2 text-xs">{t.footer.disclaimer}</p>
