@@ -67,6 +67,7 @@ export const translations = {
       contact: "Contact",
       rights: "Save Video Tiktok. All rights reserved.",
       disclaimer: "Disclaimer: This site is not affiliated with TikTok or ByteDance. It is an educational tool/clone.",
+      usefulLinks: "Useful Links",
     },
     errors: {
       empty: "Please enter a valid TikTok URL.",
@@ -140,6 +141,7 @@ export const translations = {
       contact: "Contato",
       rights: "Save Video Tiktok. Todos os direitos reservados.",
       disclaimer: "Aviso: Este site não é afiliado ao TikTok ou à ByteDance. É apenas uma ferramenta educacional/clone.",
+      usefulLinks: "Links Úteis",
     },
     errors: {
       empty: "Por favor, insira um link válido do TikTok.",
@@ -213,6 +215,7 @@ export const translations = {
       contact: "Contacto",
       rights: "Save Video Tiktok. Todos os derechos reservados.",
       disclaimer: "Aviso: Este sitio no está afiliado a TikTok ni a ByteDance. Es solo una herramienta educativa/clon.",
+      usefulLinks: "Enlaces Útiles",
     },
     errors: {
       empty: "Por favor, introduce un enlace válido de TikTok.",

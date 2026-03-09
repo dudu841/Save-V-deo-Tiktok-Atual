@@ -7,6 +7,28 @@ async function startServer() {
 
   app.use(express.json());
 
+  // 301 Redirect: Remove trailing slashes
+  app.use((req, res, next) => {
+    if (req.path.length > 1 && req.path.endsWith('/')) {
+      const query = req.url.slice(req.path.length);
+      res.redirect(301, req.path.slice(0, -1) + query);
+    } else {
+      next();
+    }
+  });
+
+  // 301 Redirect: www to non-www
+  app.use((req, res, next) => {
+    const host = req.headers.host;
+    if (host && host.startsWith('www.')) {
+      const newHost = host.replace('www.', '');
+      const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+      res.redirect(301, `${protocol}://${newHost}${req.url}`);
+    } else {
+      next();
+    }
+  });
+
   // API route to fetch TikTok video data
   app.post("/api/download", async (req, res) => {
     try {

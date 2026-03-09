@@ -20,6 +20,15 @@ export default function LandingPage() {
       if (metaDesc) {
         metaDesc.setAttribute('content', t.metaDesc.replace('{keyword}', keyword));
       }
+
+      // Canonical Tag
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', `https://savevideotik.com/${pageData.slug}`);
     }
   }, [pageData, lang]);
 

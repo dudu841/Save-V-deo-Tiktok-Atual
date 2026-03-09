@@ -90,7 +90,7 @@ export const landingTranslations = {
     haveMoreQuestions: "Have more questions?",
     bestWayToUnderstand: "The best way to understand is to try it out for yourself. It takes less than 10 seconds.",
     footerDesc: "The ultimate tool for {keyword}. Fast, free, and secure.",
-    popularTools: "Popular Tools & Pages",
+    popularTools: "Useful Links",
     allRightsReserved: "All rights reserved."
   },
   pt: {
@@ -184,7 +184,7 @@ export const landingTranslations = {
     haveMoreQuestions: "Tem mais perguntas?",
     bestWayToUnderstand: "A melhor maneira de entender é experimentar você mesmo. Leva menos de 10 segundos.",
     footerDesc: "A ferramenta definitiva para {keyword}. Rápida, gratuita e segura.",
-    popularTools: "Ferramentas e Páginas Populares",
+    popularTools: "Links Úteis",
     allRightsReserved: "Todos os direitos reservados."
   },
   es: {
@@ -278,7 +278,7 @@ export const landingTranslations = {
     haveMoreQuestions: "¿Tienes más preguntas?",
     bestWayToUnderstand: "La mejor manera de entender es probarlo por ti mismo. Tarda menos de 10 segundos.",
     footerDesc: "La herramienta definitiva para {keyword}. Rápida, gratis y segura.",
-    popularTools: "Herramientas y Páginas Populares",
+    popularTools: "Enlaces Útiles",
     allRightsReserved: "Todos los derechos reservados."
   }
 };

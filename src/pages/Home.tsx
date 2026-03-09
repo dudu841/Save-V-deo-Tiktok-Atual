@@ -45,6 +45,15 @@ export default function Home() {
     setOgMeta('twitter:title', t.seo.title);
     setOgMeta('twitter:description', t.seo.description);
 
+    // Canonical Tag
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', 'https://savevideotik.com/');
+
     // Structured Data (JSON-LD)
     const structuredData = [
       {
@@ -392,7 +401,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-5xl mx-auto pt-8 border-t border-gray-800 mb-8">
-          <h4 className="text-white font-semibold mb-6 text-center">Popular Tools & Pages</h4>
+          <h4 className="text-white font-semibold mb-6 text-center">{t.footer.usefulLinks}</h4>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-center md:text-left">
             {landingPages.map((page) => (
               <Link key={page.slug} to={`/${page.slug}`} className="hover:text-white transition-colors">
