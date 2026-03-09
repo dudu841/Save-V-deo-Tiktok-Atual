@@ -17,16 +17,35 @@ async function startServer() {
     }
   });
 
-  // 301 Redirect: www to non-www
+  // 301 Redirect: Remove lang query parameter
+  app.use((req, res, next) => {
+    if (req.url.includes('lang=')) {
+      const urlObj = new URL(req.url, `http://${req.headers.host}`);
+      if (urlObj.searchParams.has('lang')) {
+        urlObj.searchParams.delete('lang');
+        const newUrl = urlObj.pathname + urlObj.search;
+        res.redirect(301, newUrl);
+        return;
+      }
+    }
+    next();
+  });
+
+  // 301 Redirect: non-www to www
   app.use((req, res, next) => {
     const host = req.headers.host;
-    if (host && host.startsWith('www.')) {
-      const newHost = host.replace('www.', '');
+    // Skip localhost/IPs
+    if (host && !host.startsWith('www.') && !host.includes('localhost') && !host.match(/^\d+\.\d+\.\d+\.\d+/)) {
       const protocol = req.headers['x-forwarded-proto'] || req.protocol;
-      res.redirect(301, `${protocol}://${newHost}${req.url}`);
-    } else {
-      next();
+      // Only redirect if it's the main domain (savevideotik.com) or similar, but we can just prepend www.
+      // Wait, if it's a .run.app domain, we shouldn't prepend www.
+      // Let's only do it for savevideotik.com
+      if (host === 'savevideotik.com') {
+        res.redirect(301, `${protocol}://www.savevideotik.com${req.url}`);
+        return;
+      }
     }
+    next();
   });
 
   // API route to fetch TikTok video data

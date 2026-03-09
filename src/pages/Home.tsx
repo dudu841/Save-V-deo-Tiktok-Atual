@@ -52,7 +52,7 @@ export default function Home() {
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute('href', 'https://savevideotik.com/');
+    canonical.setAttribute('href', 'https://www.savevideotik.com/');
 
     // Structured Data (JSON-LD)
     const structuredData = [

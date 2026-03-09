@@ -28,7 +28,7 @@ export default function LandingPage() {
         canonical.setAttribute('rel', 'canonical');
         document.head.appendChild(canonical);
       }
-      canonical.setAttribute('href', `https://savevideotik.com/${pageData.slug}`);
+      canonical.setAttribute('href', `https://www.savevideotik.com/${pageData.slug}`);
     }
   }, [pageData, lang]);
 
