@@ -60,7 +60,7 @@ export default function Home() {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": "Save Video Tiktok",
-        "url": "https://savevideotik.com",
+        "url": "https://www.savevideotik.com",
         "description": t.seo.description,
         "applicationCategory": "MultimediaApplication",
         "operatingSystem": "All",
