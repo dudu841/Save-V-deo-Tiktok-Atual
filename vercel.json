@@ -10,7 +10,7 @@
         }
       ],
       "destination": "https://www.savevideotik.com/$1",
-      "permanent": true
+      "statusCode": 301
     }
   ],
   "rewrites": [
